@@ -2,11 +2,26 @@ var db = require('../db');
 
 module.exports = {
   messages: {
-    get: function () {}, // a function which produces all the messages
-    post: function (message, username) {
+    get: function (cb) {
       let dbConnection = db.dbConnection();
       dbConnection.connect();
-      dbConnection.query('INSERT INTO messages (text) VALUES (?)', message);
+      dbConnection.query('SELECT * FROM messages', [], function(err, data) {
+        console.log(data)
+        cb(data);
+      });
+      dbConnection.end();
+
+
+      // eventually cb(data)
+    }, // a function which produces all the messages
+    post: function (message, username, roomname) {
+      let dbConnection = db.dbConnection();
+      dbConnection.connect();
+      dbConnection.query('INSERT INTO messages (text, username, roomname) VALUES (?, ?, ?)', [message, username, roomname],function(err, data){
+        if (err) {
+          throw err;
+        }
+      });
       dbConnection.end();
 
       // if there is a user with this username already

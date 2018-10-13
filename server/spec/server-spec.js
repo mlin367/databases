@@ -53,8 +53,6 @@ describe('Persistent Node Chat Server', function() {
         var queryArgs = [];
 
         dbConnection.query(queryString, queryArgs, function(err, results) {
-          // Should have one result:
-          console.log(JSON.stringify(results))
           expect(results.length).to.equal(1);
 
           // TODO: If you don't have a column named text, change this test.

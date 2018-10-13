@@ -13,9 +13,9 @@ CREATE TABLE messages (
   /* Describe your table here.*/
   ID int NOT NULL AUTO_INCREMENT,
   text varchar(255) NOT NULL,
-  user_id int,
-  PRIMARY KEY (ID),
-  FOREIGN KEY (user_id) REFERENCES users(ID)
+  username varchar(25),
+  roomname varchar(25),
+  PRIMARY KEY (ID)
 );
 
 /* Create other tables and define schemas for them here! */
