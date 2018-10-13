@@ -4,12 +4,16 @@ var db = require('./db');
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
+var cors = require('cors');
 
 // Router
 var router = require('./routes.js');
 
 var app = express();
 module.exports.app = app;
+
+// Allow CORS
+app.use(cors());
 
 // Set what we are listening on.
 app.set('port', 3000);
