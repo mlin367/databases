@@ -9,9 +9,10 @@ module.exports = {
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      var message = req.body.message;
+      var message = req.body.text;
       var username = req.body.username;
       var roomname = req.body.roomname;
+      console.log('HELLO', message, username, roomname)
       models.messages.post(message, username, roomname);
       console.log('messsage post succes?')
       res.send('success!')
